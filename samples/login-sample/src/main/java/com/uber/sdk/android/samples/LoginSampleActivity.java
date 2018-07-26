@@ -28,7 +28,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.RestrictTo;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -43,22 +43,8 @@ import com.uber.sdk.android.core.auth.LoginCallback;
 import com.uber.sdk.android.core.auth.LoginManager;
 import com.uber.sdk.android.rides.samples.BuildConfig;
 import com.uber.sdk.android.rides.samples.R;
-import com.uber.sdk.core.auth.AccessToken;
-import com.uber.sdk.core.auth.AccessTokenStorage;
-import com.uber.sdk.core.auth.Scope;
-import com.uber.sdk.core.client.Session;
-import com.uber.sdk.core.client.SessionConfiguration;
-import com.uber.sdk.rides.client.UberRidesApi;
-import com.uber.sdk.rides.client.error.ApiError;
-import com.uber.sdk.rides.client.error.ErrorParser;
-import com.uber.sdk.rides.client.model.UserProfile;
-import com.uber.sdk.rides.client.services.RidesService;
 
 import java.util.Arrays;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static com.uber.sdk.android.core.utils.Preconditions.checkNotNull;
 import static com.uber.sdk.android.core.utils.Preconditions.checkState;
@@ -94,7 +80,7 @@ public class LoginSampleActivity extends AppCompatActivity {
         configuration = new SessionConfiguration.Builder()
                 .setClientId(CLIENT_ID)
                 .setRedirectUri(REDIRECT_URI)
-                .setScopes(Arrays.asList(Scope.PROFILE, Scope.RIDE_WIDGETS))
+                .setScopes(Arrays.asList(RestrictTo.Scope.PROFILE, RestrictTo.Scope.RIDE_WIDGETS))
                 .build();
 
         validateConfiguration(configuration);
@@ -102,7 +88,7 @@ public class LoginSampleActivity extends AppCompatActivity {
         accessTokenStorage = new AccessTokenManager(this);
 
         //Create a button with a custom request code
-        whiteButton = (LoginButton) findViewById(R.id.uber_button_white);
+        whiteButton = findViewById(R.id.uber_button_white);
         whiteButton.setCallback(new SampleLoginCallback())
                     .setSessionConfiguration(configuration);
 
@@ -121,7 +107,7 @@ public class LoginSampleActivity extends AppCompatActivity {
                 configuration,
                 CUSTOM_BUTTON_REQUEST_CODE);
 
-        customButton = (Button) findViewById(R.id.custom_uber_button);
+        customButton = findViewById(R.id.custom_uber_button);
         customButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

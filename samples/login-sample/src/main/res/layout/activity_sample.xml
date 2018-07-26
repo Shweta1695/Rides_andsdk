@@ -33,7 +33,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@android:color/black"
-        android:padding="@dimen/button_container_padding">
+        android:padding="@dimen/button_container_padding"/>
 
         <com.uber.sdk.android.core.auth.LoginButton
             android:id="@+id/uber_button_white"
@@ -43,7 +43,7 @@
             uber:ub__request_code="1111"
             uber:ub__style="white" />
 
-    </FrameLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"

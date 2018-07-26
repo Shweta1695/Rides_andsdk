@@ -35,8 +35,8 @@ android {
     defaultConfig {
         minSdkVersion deps.build.minSdkVersion
         targetSdkVersion deps.build.targetSdkVersion
-        buildConfigField "String", "CLIENT_ID", "\"${loadSecret("UBER_CLIENT_ID")}\"" //Add your client id to gradle.properties
-        buildConfigField "String", "REDIRECT_URI", "\"${loadSecret("UBER_REDIRECT_URI")}\"" //Add your redirect uri to gradle.properties
+        buildConfigField "String", "CLIENT_ID", "\"${loadSecret("bLwET2iqo-_e3StBnBA18ipEPx1kVH5P")}\"" //Add your client id to gradle.properties
+        buildConfigField "String", "REDIRECT_URI", "\"${loadSecret("com.example.shwetatripathi.myuber.uberauth://redirect")}\"" //Add your redirect uri to gradle.properties
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
@@ -45,8 +45,9 @@ android {
 }
 
 dependencies {
-    compile project(':rides-android')
-    compile deps.support.appCompat
+   // implementation project(':rides-android')
+    implementation deps.support.appCompat
+   // implementation 'com.android.support:appcompat-v7:27.1.1'
 }
 
 /**
